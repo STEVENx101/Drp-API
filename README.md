@@ -53,11 +53,11 @@ drp.api.scope=${DRP_API_SCOPE:drp-api}
 }
 ```
 
-### Wrong username/password
+### Wrong username/password (HTTP 401 Unauthorized)
 
 ```json
 {
-  "status": 200,
+  "status": 401,
   "message": "Invalid username or password.",
   "data": null
 }
@@ -110,12 +110,22 @@ Content-Type: application/json
 }
 ```
 
-### Missing/invalid JWT
+### Missing/invalid JWT (HTTP 401 Unauthorized)
 
 ```json
 {
-  "status": 200,
+  "status": 401,
   "message": "Valid Bearer token is required.",
+  "data": null
+}
+```
+
+### Access Denied (HTTP 403 Forbidden)
+
+```json
+{
+  "status": 403,
+  "message": "Access denied.",
   "data": null
 }
 ```

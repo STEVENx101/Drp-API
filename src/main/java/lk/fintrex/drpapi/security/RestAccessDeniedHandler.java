@@ -33,12 +33,13 @@ public class RestAccessDeniedHandler
             AccessDeniedException accessDeniedException
     ) throws IOException {
 
-        response.setStatus(HttpServletResponse.SC_OK);
+        response.setStatus(HttpServletResponse.SC_FORBIDDEN);
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
 
         objectMapper.writeValue(
                 response.getOutputStream(),
-                ApiResponse.empty(
+                ApiResponse.error(
+                        HttpServletResponse.SC_FORBIDDEN,
                         "Access denied."
                 )
         );

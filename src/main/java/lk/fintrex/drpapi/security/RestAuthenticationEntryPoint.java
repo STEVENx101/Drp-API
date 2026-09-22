@@ -33,11 +33,12 @@ public class RestAuthenticationEntryPoint
             AuthenticationException authException
     ) throws IOException {
 
-        response.setStatus(HttpServletResponse.SC_OK);
+        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
 
         ApiResponse<Void> body =
-                ApiResponse.empty(
+                ApiResponse.error(
+                        HttpServletResponse.SC_UNAUTHORIZED,
                         "Valid Bearer token is required."
                 );
 

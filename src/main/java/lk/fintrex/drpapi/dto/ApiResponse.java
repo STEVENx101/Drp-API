@@ -26,4 +26,15 @@ public record ApiResponse<T>(
                 null
         );
     }
+
+    public static <T> ApiResponse<T> error(
+            int status,
+            String message
+    ) {
+        return new ApiResponse<>(
+                status,
+                message,
+                null
+        );
+    }
 }
